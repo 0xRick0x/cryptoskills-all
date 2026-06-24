@@ -39,7 +39,7 @@
 
 | 场景类别           | 能帮你解决的问题示例                              |
 |--------------------|--------------------------------------------------|
-| DeFi 集成          | Aave 借贷、Jupiter 交换、Drift/GMX 杠杆交易代码   |
+| DeFi 集成          | Aave 借贷、Jupiter 交换、Drift/GMX 检杆交易代码   |
 | 跨链操作           | LayerZero / Wormhole 安全桥接与消息传递           |
 | 智能合约安全       | Slither + Mythril 审计流程 + 漏洞修复建议         |
 | 多链开发           | Foundry / Hardhat 多链部署脚本                    |
@@ -69,3 +69,62 @@
 
 ```bash
 npx cryptoskills install cryptoskills
+```
+
+---
+
+## 📝 使用示例
+
+激活后，你可以直接问 AI：
+
+- “帮我写 Aave v3 的 supply 和 borrow 集成代码”
+- “LayerZero 和 Wormhole 怎么选？给出安全实现方案”
+- “用 Slither 审计合约的推荐流程和 checklist”
+- “帮我设计一个 Solana 上的自动做市 AI Agent 架构”
+
+---
+
+## ✅ 兼容工具
+
+- Claude Code
+- Cursor
+- Codex
+- Cline
+- 其他遵循 agentskills.io 规范的 AI coding agent
+
+---
+
+## 📄 文件结构
+
+```
+cryptoskills-all/
+├── README.md
+└── cryptoskills/
+    └── SKILL.md          # 核心技能文件（元技能内容）
+```
+
+---
+
+## 🤝 贡献
+
+欢迎提交 Issue 或 PR 改进技能内容、增加新场景说明或优化兼容性。
+
+---
+
+## 📜 许可证
+
+本项目基于原始 cryptoskills.dev 项目，采用 MIT License。
+
+---
+
+## 🔗 相关链接
+
+- 原始项目：https://cryptoskills.dev
+- 原始 GitHub：https://github.com/kukapay/crypto-skills
+- 创建/贡献原版 Skill：https://cryptoskills.dev/contribute
+
+---
+
+**让 AI 真正懂 Web3，从这个元技能开始。**
+
+如有任何问题或建议，欢迎在 Issues 中反馈！
