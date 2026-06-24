@@ -1,0 +1,65 @@
+name: Check Upstream Updates
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:   # Allow manual trigger
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check upstream cryptoskills.dev latest update
+        id: check
+        run: |
+          # Get latest commit date from original repo
+          UPSTREAM_LATEST=$(curl -s https://api.github.com/repos/kukapay/crypto-skills/commits?per_page=1 | jq -r '.[0].commit.committer.date')
+          echo "upstream_latest=$UPSTREAM_LATEST" >> $GITHUB_OUTPUT
+          
+          # Get last recorded update time (stored in a file or use repo creation as baseline)
+          if [ -f .last-upstream-check ]; then
+            LAST_CHECK=$(cat .last-upstream-check)
+          else
+            LAST_CHECK="2025-01-01T00:00:00Z"
+          fi
+          echo "last_check=$LAST_CHECK" >> $GITHUB_OUTPUT
+
+      - name: Create issue if upstream has updates
+        if: steps.check.outputs.upstream_latest > steps.check.outputs.last_check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const upstreamDate = '${{ steps.check.outputs.upstream_latest }}';
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '上游 cryptoskills.dev 有更新',
+              body: `原项目 https://github.com/kukapay/crypto-skills 最新更新时间: ${upstreamDate}
+
+请检查是否需要更新本 meta-skill 的内容。
+
+建议操作：
+1. 查看原项目最新变更
+2. 更新 cryptoskills/SKILL.md 中的相关协议说明
+3. 更新 README.md（如有必要）
+
+---
+自动检测于: ${new Date().toISOString()}`
+            });
+
+      - name: Update last check timestamp
+        run: |
+          echo "${{ steps.check.outputs.upstream_latest }}" > .last-upstream-check
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .last-upstream-check
+          git commit -m "chore: update last upstream check timestamp" || echo "No changes to commit"
+          git push
