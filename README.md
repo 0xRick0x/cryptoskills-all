@@ -1,119 +1,87 @@
 # cryptoskills-all
 
-> 一个为 AI Coding Agents 打包的 Web3 / Crypto 协议**元技能**（Meta Skill）
+> 一个为 **AI Coding Agents** 打包的 Web3 / Crypto 协议 **元技能**（Meta Skill）
 
-将 [cryptoskills.dev](https://cryptoskills.dev) 上的 97 个专业技能打包整合成一个技能，让 Claude Code、Cursor、Codex、Cline 等 AI coding agent 能够快速、准确地掌握主流区块链协议知识。
+[![Upstream Check](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml/badge.svg)](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml)
 
----
-
-## ✨ 项目简介
-
-本技能是基于 [cryptoskills.dev](https://cryptoskills.dev) 项目的**元技能版本**，将原本分散的 97 个独立 skills 整合为一个统一技能包。
-
-**核心价值**：让 AI 快速获得生产级的 DeFi、跨链、智能合约安全、AI Agent 构建等 Web3 领域知识，大幅提升开发效率并减少幻觉和错误。
+将 [cryptoskills.dev](https://cryptoskills.dev) 上的 97 个专业技能打包整合成一个技能，让 **Claude Code**、**Cursor**、**Codex**、**Cline** 等 AI coding agent 能够快速、准确地掌握主流区块链协议知识。
 
 ---
 
-## 📌 来源与修改说明
+## ✨ 主要特性
 
-- **原始来源**：https://cryptoskills.dev（GitHub: kukapay/crypto-skills）
-- **本次修改**：
-  - 将 97 个独立 skills 打包为**单个元技能**
-  - 新增大量**中文说明**和**具体实用场景**
-  - 增加「具体能帮你做什么」详细列表（9 大类真实开发场景）
-  - 优化兼容性，支持 **Claude Code、Cursor、Codex、Cline** 等主流 AI coding agent
-  - 增加清晰的使用方法和安装指南
+- 将14个类别、15条链、97个主流协议打包为单个元技能
+- 完整中文说明 + 具体实用场景
+- 自动监控上游更新（每周自动创建 PR）
+- 兼容 Claude Code、Cursor、Codex、Cline 等主流 AI 工具
 
 ---
 
-## 🚀 主要作用
+## 📌 来源与修改
 
-- 让 AI 快速掌握 Aave、Jupiter、LayerZero、Slither、Foundry、Chainlink 等 97 个主流协议的使用方式
-- 提供生产级代码模式、安全最佳实践和常见坑点提醒
-- 支持 DeFi 集成、跨链桥接、智能合约审计、AI 交易代理构建等多场景
-- 显著提升 Web3 项目开发速度和代码质量
+- **原始来源**： [cryptoskills.dev](https://cryptoskills.dev)（kukapay/crypto-skills）
+- **本仓库优化**：
+  - 打包为元技能（Meta Skill）
+  - 大量中文说明和实用场景
+  - 增加代码示例
+  - 添加自动上游监控和 PR 创建
+
+---
+
+## 🚀 快速开始
+
+```bash
+# 1. Clone 本仓库
+git clone https://github.com/0xRick0x/cryptoskills-all.git
+
+# 2. 将 cryptoskills 文件夹复制到你的 AI 工具 skills 目录
+cp -r cryptoskills ~/.claude/skills/          # Claude Code
+# 或者复制到 Cursor / Codex 相应位置
+
+# 3. 重启 AI 工具即可生效
+```
 
 ---
 
 ## 🛠 具体能帮你做什么
 
-| 场景类别           | 能帮你解决的问题示例                              |
-|--------------------|--------------------------------------------------|
-| DeFi 集成          | Aave 借贷、Jupiter 交换、Drift/GMX 检杆交易代码   |
-| 跨链操作           | LayerZero / Wormhole 安全桥接与消息传递           |
-| 智能合约安全       | Slither + Mythril 审计流程 + 漏洞修复建议         |
-| 多链开发           | Foundry / Hardhat 多链部署脚本                    |
-| AI Agent 构建      | 让 AI 自主执行链上交易、跨链套利                  |
-| 前端 UX            | Privy + viem 钱包连接与交易体验优化               |
-| 预言机与 NFT       | Chainlink/Pyth 集成、Metaplex 压缩 NFT 发行       |
-| 交易与分析         | 预测市场、聪明钱追踪、永续合约策略                |
+| 场景           | 可以帮你完成的事情                              |
+|-------------------|--------------------------------------------------|
+| DeFi 集成       | Aave、Jupiter、Morpho、Drift 等集成代码         |
+| 跨链操作       | LayerZero / Wormhole 桥接与消息传递             |
+| 合约安全       | Slither、Mythril 审计流程和漏洞修复       |
+| AI Agent 构建   | 让 AI 自主执行链上交易和跨链操作       |
+| 前端 UX        | Privy + viem 钱包连接与交易体验优化       |
+| 多链部署       | Arbitrum、Base、Solana 等多链部署方案       |
 
 ---
 
-## 📥 安装方法
+## 📝 实用代码示例
 
-### 推荐方式（手动安装，兼容性最好）
+详细示例请查看 [`cryptoskills/SKILL.md`](cryptoskills/SKILL.md)。
 
-1. 下载或克隆本仓库
-2. 将 `cryptoskills` 文件夹复制到对应 AI 工具的 skills 目录：
-
-| AI 工具          | 推荐路径                                      |
-|------------------|-----------------------------------------------|
-| **Claude Code**  | `~/.claude/skills/cryptoskills/`              |
-| **Cursor**       | 项目根目录或全局 skills 文件夹                |
-| **Codex / Cline**| 参考对应工具的 skills 加载路径                |
-
-3. 重启或重新加载 AI coding agent 即可生效。
-
-### 使用原版 CLI 安装（可选）
-
-```bash
-npx cryptoskills install cryptoskills
-```
-
----
-
-## 📝 使用示例
-
-激活后，你可以直接问 AI：
-
-- “帮我写 Aave v3 的 supply 和 borrow 集成代码”
-- “LayerZero 和 Wormhole 怎么选？给出安全实现方案”
-- “用 Slither 审计合约的推荐流程和 checklist”
-- “帮我设计一个 Solana 上的自动做市 AI Agent 架构”
+包含：
+- Aave v3 supply 示例（viem）
+- Jupiter Swap 示例（Solana Agent Kit）
+- Slither 快速审计命令
 
 ---
 
 ## ✅ 兼容工具
 
-- Claude Code
-- Cursor
-- Codex
-- Cline
-- 其他遵循 agentskills.io 规范的 AI coding agent
+Claude Code • Cursor • Codex • Cline • 其他 agentskills.io 规范工具
 
 ---
 
-## 📄 文件结构
+## 🔄 自动同步机制
 
-```
-cryptoskills-all/
-├── README.md
-└── cryptoskills/
-    └── SKILL.md          # 核心技能文件（元技能内容）
-```
+每周一自动检查原项目更新，若有新更新创建 Draft PR 提醒你同步内容。
 
 ---
 
 ## 🤝 贡献
 
-欢迎提交 Issue 或 PR 改进技能内容、增加新场景说明或优化兼容性。
-
----
-
-## 📜 许可证
-
-本项目基于原始 cryptoskills.dev 项目，采用 MIT License。
+欢迎提交 Issue 或 PR 改进内容或添加更多实用示例。
 
 ---
 
@@ -121,10 +89,8 @@ cryptoskills-all/
 
 - 原始项目：https://cryptoskills.dev
 - 原始 GitHub：https://github.com/kukapay/crypto-skills
-- 创建/贡献原版 Skill：https://cryptoskills.dev/contribute
+- 创建/贡献 Skill：https://cryptoskills.dev/contribute
 
 ---
 
-**让 AI 真正懂 Web3，从这个元技能开始。**
-
-如有任何问题或建议，欢迎在 Issues 中反馈！
+**Let AI truly understand Web3.**
