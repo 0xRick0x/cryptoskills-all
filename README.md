@@ -1,96 +1,95 @@
 # cryptoskills-all
 
-> 一个为 **AI Coding Agents** 打包的 Web3 / Crypto 协议 **元技能**（Meta Skill）
+> 一个集成 **cryptoskills.dev** + **Binance Wallet Skills** 的 Web3 **元技能**（Meta Skill）
 
 [![Upstream Check](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml/badge.svg)](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml)
 
-将 [cryptoskills.dev](https://cryptoskills.dev) 上的 97 个专业技能打包整合成一个技能，让 **Claude Code**、**Cursor**、**Codex**、**Cline** 等 AI coding agent 能够快速、准确地掌握主流区块链协议知识。
+将 [cryptoskills.dev](https://cryptoskills.dev) 的 97 个协议与 **Binance Wallet Skills** 打包整合为一个技能，让 AI Agent 能快速掌握 DeFi、跨链、钱包操作、市场信号和安全审计能力。
 
 ---
 
 ## ✨ 主要特性
 
-- 将14个类别、15条链、97个主流协议打包为单个元技能
-- 完整中文说明 + 具体实用场景
-- 自动监控上游更新（每周自动创建 PR）
-- 兼容 Claude Code、Cursor、Codex、Cline 等主流 AI 工具
+- cryptoskills.dev 97 个协议 + Binance 8+ Wallet Skills 集成
+- 完整中文说明 + 实用代码示例
+- 每周自动检查上游并创建 PR
+- 兼容 Claude Code、Cursor、Codex、Cline 等 AI 工具
+- 支持 Binance Web3 Wallet 操作和市场能力
 
 ---
 
-## 📌 来源与修改
+## 📌 来源与集成
 
-- **原始来源**： [cryptoskills.dev](https://cryptoskills.dev)（kukapay/crypto-skills）
-- **本仓库优化**：
-  - 打包为元技能（Meta Skill）
-  - 大量中文说明和实用场景
-  - 增加代码示例
-  - 添加自动上游监控和 PR 创建
+- **cryptoskills.dev** 原始项目
+- **Binance Wallet Skills** 官方集成
+- 本仓库将两者打包为统一元技能，方便 AI 一站式调用
 
 ---
 
 ## 🚀 快速开始
 
 ```bash
-# 1. Clone 本仓库
+# Clone
 git clone https://github.com/0xRick0x/cryptoskills-all.git
 
-# 2. 将 cryptoskills 文件夹复制到你的 AI 工具 skills 目录
-cp -r cryptoskills ~/.claude/skills/          # Claude Code
-# 或者复制到 Cursor / Codex 相应位置
+# 复制到 AI 工具 skills 目录
+cp -r cryptoskills ~/.claude/skills/
 
-# 3. 重启 AI 工具即可生效
+# 或者使用 Binance 官方安装
+npx skills add binance-web3
 ```
 
 ---
 
 ## 🛠 具体能帮你做什么
 
-| 场景           | 可以帮你完成的事情                              |
-|-------------------|--------------------------------------------------|
-| DeFi 集成       | Aave、Jupiter、Morpho、Drift 等集成代码         |
-| 跨链操作       | LayerZero / Wormhole 桥接与消息传递             |
-| 合约安全       | Slither、Mythril 审计流程和漏洞修复       |
-| AI Agent 构建   | 让 AI 自主执行链上交易和跨链操作       |
-| 前端 UX        | Privy + viem 钱包连接与交易体验优化       |
-| 多链部署       | Arbitrum、Base、Solana 等多链部署方案       |
+| 场景               | 能力描述                                      |
+|-----------------------|--------------------------------------------------|
+| DeFi 集成           | Aave, Jupiter, Morpho, Drift 等集成             |
+| Binance 钱包操作   | 转账、DEX 交换、限价单、预测市场     |
+| 市场信号与 Meme | crypto-market-rank, meme-rush, trading-signal     |
+| 安全审计           | query-token-audit + Slither 双重保障             |
+| 钱包持仓查询     | query-address-info 快速查看持仓               |
+| AI Agent 构建       | 自主执行链上操作（支持 Binance + 其他） |
 
 ---
 
 ## 📝 实用代码示例
 
-详细示例请查看 [`cryptoskills/SKILL.md`](cryptoskills/SKILL.md)。
+详见 [`cryptoskills/SKILL.md`](cryptoskills/SKILL.md)，包含：
 
-包含：
-- Aave v3 supply 示例（viem）
-- Jupiter Swap 示例（Solana Agent Kit）
-- Slither 快速审计命令
+- Aave v3 Supply
+- Jupiter Swap
+- **Binance Agentic Wallet Swap**
+- **query-address-info 查询持仓**
+- Slither 审计
 
 ---
 
 ## ✅ 兼容工具
 
-Claude Code • Cursor • Codex • Cline • 其他 agentskills.io 规范工具
+Claude Code • Cursor • Codex • Cline • Binance Skills Hub
 
 ---
 
-## 🔄 自动同步机制
+## 🔄 自动同步
 
-每周一自动检查原项目更新，若有新更新创建 Draft PR 提醒你同步内容。
+每周自动检查 cryptoskills.dev 和 Binance Skills Hub 更新，并创建 PR 提醒同步。
 
 ---
 
 ## 🤝 贡献
 
-欢迎提交 Issue 或 PR 改进内容或添加更多实用示例。
+欢迎提交 PR 或 Issue 改进内容。
 
 ---
 
 ## 🔗 相关链接
 
-- 原始项目：https://cryptoskills.dev
-- 原始 GitHub：https://github.com/kukapay/crypto-skills
-- 创建/贡献 Skill：https://cryptoskills.dev/contribute
+- cryptoskills.dev: https://cryptoskills.dev
+- Binance Wallet Skills: https://web3.binance.com/zh-CN/dev-docs/products/wallet-skills/supported-skills
+- Binance Skills Hub: https://github.com/binance/binance-skills-hub
 
 ---
 
-**Let AI truly understand Web3.**
+**AI 真正懂 Web3 — cryptoskills + Binance Skills**
