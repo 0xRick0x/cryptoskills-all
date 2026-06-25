@@ -84,7 +84,20 @@ const trending = await gmgn.getTrendingTokens({ chain: 'sol', timeframe: '1h' })
 const analysis = await gmgn.analyzeSmartMoney(tokenAddress);
 ```
 
-### 示例 5: Polymarket 查询市场 + 下单
+### 示例 5: GMGN 信号 + CEX/DEX 执行（组合用法）
+```ts
+// 1. 获取 GMGN smart money 信号
+const signal = await gmgn.getSmartMoneyBuys({ chain: 'sol' });
+
+// 2. 在 CEX 或 DEX 上执行交易
+const tx = await exchange.placeOrder({
+  symbol: signal.token + 'USDT',
+  side: 'BUY',
+  type: 'MARKET'
+});
+```
+
+### 示例 6: Polymarket 查询市场 + 下单
 ```ts
 // 查询热门预测市场
 const markets = await polymarket.gamma.getMarkets({ limit: 10, order: 'volume' });
@@ -99,11 +112,18 @@ const order = await polymarket.clob.placeOrder({
 });
 ```
 
-### 示例 6: Uniswap v4 Hook 安全审查
+### 示例 7: Uniswap v4 Hook 安全审查
 ```ts
 // 使用 v4-security-foundations 审查 Hook 风险
 // AI 会自动检查 beforeSwapReturnDelta、afterSwapReturnDelta 等潜在风险
 ```
+
+## 常见组合用法（高级场景）
+
+- **GMGN 信号 → CEX/DEX 执行**：用 GMGN 监控 smart money 动向，然后在 CEX 或 DEX 上快速跟进。
+- **Polymarket 分析 → CEX 对冲**：在 Polymarket 上下注某事件后，可以在 CEX 上对冲对冲冲。
+- **Uniswap/PancakeSwap Liquidity + Farming**：创建 LP 后立即设置农场收益。
+- **多 CEX 价差仲裁**：在多家 CEX 之间寻找价差并执行交易。
 
 ## 响应与使用原则
 - 优先使用安全审计和市场数据
