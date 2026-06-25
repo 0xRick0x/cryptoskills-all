@@ -15,7 +15,7 @@
 - Uniswap + PancakeSwap AI Skills
 - GMGN AI Skills（Meme 币、Smart Money）
 - Polymarket API（预测市场）
-- 多个实用代码示例
+- 多个实用代码示例 + 高级组合用法
 - 自动监控上游并创建 PR
 - 兼容 Claude Code、Cursor、Codex 等
 
@@ -23,12 +23,12 @@
 
 ## 📌 集成生态
 
-| 类别           | 主要生态                          | 核心能力                          |
-|-------------------|---------------------------------------------|-------------------------------------------|
-| 链上协议     | cryptoskills.dev + Uniswap + PancakeSwap   | DeFi 集成、Swap、Liquidity、Hooks     |
-| CEX Agent        | Binance + OKX + Gate + Bybit + Bitget      | Spot/Futures/Options + 机器人          |
-| Meme / Smart Money | GMGN                                       | Trending、Smart Money、Token Analysis     |
-| 预测市场     | Polymarket                                 | 市场查询、持仓分析、交易   |
+| 类别             | 主要生态                              | 核心能力                           |
+|---------------------|------------------------------------------------|---------------------------------------------|
+| 链上 DeFi 协议 | cryptoskills.dev + Uniswap + PancakeSwap      | Swap、Liquidity、Farming、Hooks          |
+| CEX Agent          | Binance + OKX + Gate + Bybit + Bitget         | Spot/Futures/Options + 机器人            |
+| Meme / Smart Money | GMGN                                          | Trending、Smart Money、Token Analysis       |
+| 预测市场       | Polymarket                                    | 市场查询、持仓分析、交易     |
 
 ---
 
@@ -60,10 +60,11 @@ npx skills add GMGNAI/gmgn-skills
 ## 🛠 具体能帮你做什么
 
 - **链上 DeFi 协议集成**：Uniswap / PancakeSwap Swap、Liquidity、Farming
-- **CEX 交易**：Binance / OKX / Gate / Bybit / Bitget 现货、永续、期权
+- **CEX 交易与自动化**：Binance / OKX / Gate / Bybit / Bitget 现货、永续、期权
 - **Meme 币与 Smart Money**：GMGN Trending、Smart Money 跟踪
 - **预测市场交易**：Polymarket 市场查询和下单
 - **开发与安全**：v4 Hooks 安全审查、Slither 快速审计
+- **高级组合用法**：GMGN 信号 → 执行、Polymarket 分析 → CEX 对冲
 
 ---
 

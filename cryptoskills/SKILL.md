@@ -120,10 +120,45 @@ const order = await polymarket.clob.placeOrder({
 
 ## 常见组合用法（高级场景）
 
-- **GMGN 信号 → CEX/DEX 执行**：用 GMGN 监控 smart money 动向，然后在 CEX 或 DEX 上快速跟进。
-- **Polymarket 分析 → CEX 对冲**：在 Polymarket 上下注某事件后，可以在 CEX 上对冲对冲冲。
-- **Uniswap/PancakeSwap Liquidity + Farming**：创建 LP 后立即设置农场收益。
-- **多 CEX 价差仲裁**：在多家 CEX 之间寻找价差并执行交易。
+### 组合 1: GMGN Smart Money 信号 → CEX/DEX 执行
+```ts
+// 获取 GMGN smart money 买入信号
+const signals = await gmgn.getSmartMoneyBuys({ chain: 'sol', minAmount: 10000 });
+
+// 选择信号最强的 token 并执行交易
+const bestToken = signals[0].token;
+const tx = await exchange.placeOrder({
+  symbol: bestToken + 'USDT',
+  side: 'BUY',
+  type: 'MARKET'
+});
+```
+
+### 组合 2: Polymarket 事件分析. → CEX 对冲对冲
+```ts
+// 1. 分析 Polymarket 事件
+const event = await polymarket.gamma.getEvent(eventId);
+
+// 2. 如果判断有利润空间，在 CEX 上对冲对冲
+const hedgeOrder = await exchange.placeOrder({
+  symbol: relatedAsset + 'USDT',
+  side: 'SELL',  // 对冲
+  type: 'MARKET'
+});
+```
+
+### 组合 3: GMGN Meme 币分析 → PancakeSwap/Uniswap 流动性提供
+```ts
+// 1. 使用 GMGN 分析 hot meme token
+const tokenInfo = await gmgn.analyzeToken(tokenAddress);
+
+// 2. 如果质量合格，在 PancakeSwap/Uniswap 上提供流动性
+const lpTx = await pancakeswap.addLiquidity({
+  token0: 'WBNB',
+  token1: tokenAddress,
+  amount0: parseEther('0.5')
+});
+```
 
 ## 响应与使用原则
 - 优先使用安全审计和市场数据
