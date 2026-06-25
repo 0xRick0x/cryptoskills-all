@@ -1,6 +1,6 @@
 ---
 name: cryptoskills
-description: Use for Web3 crypto blockchain DeFi cross-chain security auditing and AI agent development tasks — activate on queries about Aave Compound Jupiter Raydium LayerZero Wormhole Slither Foundry Viem Chainlink Binance Wallet Skills OKX Agent Gate AI Agent Bybit AI Trading Skill Bitget Agent Hub Uniswap AI Skills PancakeSwap AI Skills GMGN AI Skills Polymarket API prediction-markets gamma-api clob-api or any of the 97+ protocols and major DEX/CEX/prediction market skills. Compatible with Claude Code, Cursor, Codex, Cline.
+description: Use for Web3 crypto blockchain DeFi cross-chain security auditing and AI agent development tasks — activate on queries about Aave, Jupiter, Binance, OKX, Gate, Bybit, Bitget, Uniswap, PancakeSwap, GMGN, Polymarket or any major on-chain protocol and CEX/DEX agent skills. Compatible with Claude Code, Cursor, Codex, Cline.
 compatibility: ["claude-code", "cursor", "codex", "cline", "other-agentskills"]
 license: MIT
 tags: ["crypto", "web3", "defi", "cross-chain", "security", "ai-agent", "binance", "okx", "gate", "bybit", "bitget", "uniswap", "pancakeswap", "gmgn", "polymarket"]
@@ -9,57 +9,69 @@ category: meta
 
 # cryptoskills (元技能版)
 
-> **来源**：cryptoskills.dev + Binance + OKX + Gate + Bybit + Bitget + Uniswap + PancakeSwap + GMGN + **Polymarket**  
+> **来源**：cryptoskills.dev + Binance + OKX + Gate + Bybit + Bitget + Uniswap + PancakeSwap + GMGN + Polymarket
 > **修改者**：Grok (xAI) 为用户 0xRick 定制
 
 ## 作用
 
-集成了 cryptoskills.dev、多家 CEX Agent、多个 DEX AI Skills 和 **Polymarket API** 的核心知识，让 AI Agent 能同时掌握链上 DeFi、CEX 交易、DEX 集成、Meme/Smart Money 和预测市场交易能力。
+集成了主流链上协议、CEX Agent、DEX AI Skills 和预测市场的核心知识，让 AI Agent 能同时掌握 DeFi 协议集成、CEX 交易、DEX 操作、Meme/Smart Money 分析和预测市场交易能力。
 
-## Polymarket API Skills 集成
+## 集成生态概览
 
-Polymarket 推出了官方 **Polymarket API** （https://docs.polymarket.com/cn/api-reference/introduction），是全球最大的预测市场平台之一（基于 Polygon）。
-
-**主要 API 分类**：
-
-- **Gamma API** — 市场、事件、标签、搜索等公共数据（无需认证）
-- **Data API** — 用户持仓、交易记录、排行榜、开放利息等分析数据
-- **CLOB API** — 订单簿、价格、交易操作（部分端点需认证）
-
-**优势**：
-- 完整的预测市场交易能力
-- 支持事件类型的交易（选举、体育、新闻等）
-- 适合 AI Agent 进行信息收集和策略交易
+| 类别           | 主要生态                          | 核心能力                     |
+|-------------------|---------------------------------------------|-----------------------------------------|
+| 链上协议   | cryptoskills.dev + Uniswap + PancakeSwap   | DeFi 集成、Swap、Liquidity、Hooks     |
+| CEX Agent        | Binance + OKX + Gate + Bybit + Bitget      | Spot/Futures/Options + 机器人        |
+| Meme / Smart Money | GMGN                                       | Trending、Smart Money、Token Analysis   |
+| 预测市场     | Polymarket                                 | 市场查询、持仓分析、交易   |
 
 ## 具体能帮你做什么
 
-**1.** DeFi 协议集成和 Uniswap/PancakeSwap Swap/Liquidity/Farming
-**2.** 跨链和安全审计
-**3-8.** Binance / OKX / Gate / Bybit / Bitget CEX 交易
-**9.** GMGN — Solana Meme 币、Smart Money 跟踪
-**10. Polymarket** — 预测市场查询、持仓分析、事件交易
+**1. 链上 DeFi 协议集成**
+- Uniswap / PancakeSwap Swap、Liquidity、Farming
+- Aave、Jupiter、Morpho 等借贷和交换
+
+**2. CEX 交易与机器人**
+- Binance / OKX / Gate / Bybit / Bitget 现货、永续、期权交易
+- 网格、DCA 策略、限价单
+
+**3. Meme 币与 Smart Money 分析**
+- GMGN Trending Tokens、Smart Money 跟踪、KOL 信号
+
+**4. 预测市场交易**
+- Polymarket 市场查询、持仓分析、事件交易
+
+**5. 开发与安全**
+- v4 Hooks 安全审查、Slither 快速审计
+- viem / wagmi 集成
 
 ## 实用代码示例
 
-### 示例 1-8: Aave / Jupiter / Binance / OKX / Gate / Bybit / Uniswap / PancakeSwap (略)
-
-### 示例 9: GMGN Trending Tokens
+### 1. Uniswap / PancakeSwap Swap
 ```ts
-const trending = await gmgn.getTrendingTokens({ chain: 'sol', ... });
+const tx = await uniswap.swap(quote);
+// 或 PancakeSwap
 ```
 
-### 示例 10: Polymarket 查询市场 (Gamma API)
+### 2. Binance / OKX / Gate / Bybit / Bitget 交易
 ```ts
-// 查询热门预测市场
-const markets = await polymarket.gamma.getMarkets({
-  limit: 20,
-  order: 'volume24hr'
-});
+const res = await baw.swap({ fromToken: 'BNB', toToken: 'USDT', amount: '0.5' });
+// 或 okxTrade.placeOrder(...)
+// 或 gateFutures.placeOrder(...)
 ```
 
-### 示例 11: Polymarket 下单 (CLOB API)
+### 3. GMGN Trending + Smart Money
 ```ts
-// 使用 CLOB API 下单（需要认证）
+const trending = await gmgn.getTrendingTokens({ chain: 'sol', timeWindow: '1h' });
+```
+
+### 4. Polymarket 查询市场
+```ts
+const markets = await polymarket.gamma.getMarkets({ limit: 20, order: 'volume24hr' });
+```
+
+### 5. Polymarket 下单
+```ts
 const order = await polymarket.clob.placeOrder({
   market: 'marketId',
   outcome: 'Yes',
@@ -70,9 +82,9 @@ const order = await polymarket.clob.placeOrder({
 ```
 
 ## 响应与使用原则
-- 集成了 cryptoskills.dev + 多家 CEX + DEX Skills + GMGN + **Polymarket**
 - 优先使用安全审计和市场数据
-- 原版文档：https://docs.polymarket.com/cn/api-reference/introduction
+- CEX 交易前建议使用安全审计 Skills
+- 原版安装方式参见各自官方文档
 
 ## 相关资源
 
@@ -85,6 +97,6 @@ const order = await polymarket.clob.placeOrder({
 - Uniswap AI Skills
 - PancakeSwap AI Skills
 - GMGN AI Skills
-- **Polymarket API**: https://docs.polymarket.com/cn/api-reference/introduction
+- Polymarket API: https://docs.polymarket.com/cn/api-reference/introduction
 
 此技能已集成主流链上协议、CEX Agent、DEX Skills 和预测市场生态。
