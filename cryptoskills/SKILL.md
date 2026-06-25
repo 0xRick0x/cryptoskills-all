@@ -1,72 +1,76 @@
 ---
 name: cryptoskills
-description: Use for Web3 crypto blockchain DeFi cross-chain security auditing and AI agent development tasks — activate on queries about Aave Compound Jupiter Raydium LayerZero Wormhole Slither Foundry Viem Chainlink Binance Wallet Skills OKX Agent Gate AI Agent Bybit AI Trading Skill Bitget Agent Hub bitget-skill or any of the 97+ protocols and major CEX agent skills. Compatible with Claude Code, Cursor, Codex, Cline.
+description: Use for Web3 crypto blockchain DeFi cross-chain security auditing and AI agent development tasks — activate on queries about Aave Compound Jupiter Raydium LayerZero Wormhole Slither Foundry Viem Chainlink Binance Wallet Skills OKX Agent Gate AI Agent Bybit AI Trading Skill Bitget Agent Hub Uniswap AI Skills swap-integration liquidity-planner v4-hooks or any of the 97+ protocols and major CEX/DEX agent skills. Compatible with Claude Code, Cursor, Codex, Cline.
 compatibility: ["claude-code", "cursor", "codex", "cline", "other-agentskills"]
 license: MIT
-tags: ["crypto", "web3", "defi", "cross-chain", "security", "ai-agent", "binance", "okx", "gate", "bybit", "bitget"]
+tags: ["crypto", "web3", "defi", "cross-chain", "security", "ai-agent", "binance", "okx", "gate", "bybit", "bitget", "uniswap"]
 category: meta
 ---
 
 # cryptoskills (元技能版)
 
-> **来源**：cryptoskills.dev + Binance + OKX + Gate + Bybit + **Bitget**  
+> **来源**：cryptoskills.dev + Binance + OKX + Gate + Bybit + Bitget + **Uniswap**  
 > **修改者**：Grok (xAI) 为用户 0xRick 定制
 
 ## 作用
 
-集成了 cryptoskills.dev、Binance、OKX、Gate、Bybit 和 **Bitget Agent Hub** 的核心知识，让 AI Agent 能同时掌握链上 DeFi 和多家 CEX 交易能力。
+集成了 cryptoskills.dev、多家 CEX Agent 和 **Uniswap AI Skills** 的核心知识，让 AI Agent 能同时掌握链上 DeFi 协议、CEX 交易和 Uniswap v3/v4 集成能力。
 
-## Bitget Agent Hub 集成
+## Uniswap AI Skills 集成
 
-Bitget 推出了 **Bitget Agent Hub** （https://github.com/Bitget-AI/agent_hub），包含 `bitget-skill` 和 `bitget-client` (bgc CLI)。
+Uniswap 推出了官方 **Uniswap AI Skills** （https://developers.uniswap.org/docs/uniswap-ai/skills），专注于 Uniswap 协议的 AI Agent 开发和集成。
 
-**主要特点**：
-- 通过 `bgc` CLI 作为桥接，让 AI 直接操用 Bitget API
-- 支持 Spot、Futures 交易、仓位管理、杀仓、设置杠杆
-- 提供 bitget-skill （适配 Claude Code 等）
-- 安全机制：写操作需确认、read-only 模式
-- 还包含多个市场分析 Skill（macro-analyst、technical-analysis 等）
+**主要 Skills**：
+
+- **swap-integration** — 使用 Uniswap API、Universal Router 或直接合约集成 Swap
+- **liquidity-planner** — 规划 LP 位置并生成接口深链接
+- **v4-security-foundations** — Uniswap v4 Hooks 安全风险审查
+- **viem-integration** — viem + wagmi EVM 客户端集成
+- **pay-with-any-token** — 使用 Uniswap Swap 支付 x402 / HTTP 402
+
+**优势**：
+- 官方维护，与 Uniswap v3/v4 深度绑定
+- 支持开发者构建 dApp 和 AI 交易代理
+- 可以通过 `npx skills add Uniswap/uniswap-ai` 安装
 
 ## 具体能帮你做什么
 
-**1-3.** DeFi 集成、跨链、安全审计
-**4.** Binance Wallet 操作
-**5.** OKX CEX 交易 + 机器人
-**6.** Gate AI Agent (CEX + DEX + 跨平台)
-**7.** Bybit (Spot / Perpetual / Options)
-**8. Bitget Agent Hub** — Spot/Futures 交易、仓位管理、市场数据查询
+**1.** DeFi 协议集成和 Uniswap Swap/Liquidity 开发
+**2.** 跨链和安全审计
+**3-8.** Binance / OKX / Gate / Bybit / Bitget CEX 交易
+**9.** AI Agent 构建（链上 + 多家 CEX + Uniswap v4 Hooks）
 
 ## 实用代码示例
 
-### 示例 1-5: Aave / Jupiter / Binance / OKX / Gate (略)
+### 示例 1-6: Aave / Jupiter / Binance / OKX / Gate / Bybit (略)
 
-### 示例 6: Bybit 永续交易
+### 示例 7: Uniswap Swap Integration
 ```ts
-const order = await bybitTrade.placeOrder({ symbol: 'BTCUSDT', ... });
-```
-
-### 示例 7: Bitget 永续合约下单 (bitget-skill)
-```ts
-// 使用 bitget-skill + bgc CLI 下单
-const result = await bgc.futures.placeOrder({
-  symbol: 'BTCUSDT_UMCBL',
-  marginCoin: 'USDT',
-  size: '0.001',
-  side: 'open_long',
-  orderType: 'market'
+// 使用 Uniswap Universal Router 或 API 执行 Swap
+const quote = await uniswap.quote({
+  tokenIn: 'ETH',
+  tokenOut: 'USDC',
+  amountIn: parseEther('1')
 });
+
+const tx = await uniswap.swap(quote);
 ```
 
-### 示例 8: Bitget 查询余额和仓位
+### 示例 8: Uniswap v4 Hook Security Review
 ```ts
-const balance = await bgc.account.getAccountList();
-const positions = await bgc.futures.getPositions();
+// 使用 v4-security-foundations 审查 Hook
+// AI 会自动检查 beforeSwapReturnDelta 等风险点
+```
+
+### 示例 9: Bitget 永续交易
+```ts
+const result = await bgc.futures.placeOrder({...});
 ```
 
 ## 响应与使用原则
-- 集成了 cryptoskills.dev + Binance + OKX + Gate + Bybit + **Bitget**
+- 集成了 cryptoskills.dev + 多家 CEX + **Uniswap AI Skills**
 - 优先使用安全审计和市场数据
-- 原版安装：`npx bitget-hub install --target claude` 或 `npm install -g bitget-skill bitget-client`
+- 原版安装：`npx skills add Uniswap/uniswap-ai`
 
 ## 相关资源
 
@@ -74,8 +78,8 @@ const positions = await bgc.futures.getPositions();
 - Binance Wallet Skills
 - OKX Agent
 - Gate AI Agent
-- Bybit AI Trading Skill
-- **Bitget Agent Hub**: https://github.com/Bitget-AI/agent_hub
-- bitget-skill: https://github.com/Bitget-AI/agent_hub/blob/main/docs/packages/bitget-skill.md
+- Bybit
+- Bitget Agent Hub
+- **Uniswap AI Skills**: https://developers.uniswap.org/docs/uniswap-ai/skills
 
-此技能已集成六大主流 AI Agent 技能生态。
+此技能已集成主流链上协议和 CEX Agent 生态。
