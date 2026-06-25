@@ -184,6 +184,18 @@ const arbTx = await bestExchange.placeOrder({...});
 // 3. 可选：在 DEX 上对冲对冲冲
 ```
 
+### 组合 6: GMGN Trending Meme → PancakeSwap Liquidity + CEX 对冲
+```ts
+// 1. 获取 GMGN hot meme token
+const hotTokens = await gmgn.getTrendingTokens({ chain: 'bsc', minLiquidity: 50000 });
+
+// 2. 在 PancakeSwap 上提供流动性
+const lpTx = await pancakeswap.addLiquidity({ token0: 'WBNB', token1: hotTokens[0], ... });
+
+// 3. 在 CEX 上对冲对冲（减少滑点风险）
+const hedge = await binance.placeOrder({ symbol: 'BNBUSDT', side: 'SELL', ... });
+```
+
 ## 响应与使用原则
 - 优先使用安全审计和市场数据
 - CEX 交易前建议先进行安全审计

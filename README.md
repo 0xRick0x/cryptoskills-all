@@ -10,14 +10,13 @@
 
 ## ✨ 主要特性
 
-- cryptoskills.dev 97 个协议
-- 5 家主流 CEX Agent （Binance / OKX / Gate / Bybit / Bitget）
-- Uniswap + PancakeSwap AI Skills
-- GMGN AI Skills（Meme 币、Smart Money）
-- Polymarket API（预测市场）
-- 多个实用代码示例 + 高级组合用法
-- 自动监控上游并创建 PR
-- 兼容 Claude Code、Cursor、Codex 等
+-  **cryptoskills.dev** 97 个协议
+-  **5 家 CEX Agent**：Binance / OKX / Gate / Bybit / Bitget
+-  **DEX AI Skills**：Uniswap + PancakeSwap
+-  **Meme & Smart Money**：GMGN
+-  **预测市场**：Polymarket
+-  **高级组合用法**：多个跨平台协同示例
+-  **自动化维护**：上游更新自动监控 + PR
 
 ---
 
@@ -59,12 +58,28 @@ npx skills add GMGNAI/gmgn-skills
 
 ## 🛠 具体能帮你做什么
 
-- **链上 DeFi 协议集成**：Uniswap / PancakeSwap Swap、Liquidity、Farming
-- **CEX 交易与自动化**：Binance / OKX / Gate / Bybit / Bitget 现货、永续、期权
-- **Meme 币与 Smart Money**：GMGN Trending、Smart Money 跟踪
-- **预测市场交易**：Polymarket 市场查询和下单
-- **开发与安全**：v4 Hooks 安全审查、Slither 快速审计
-- **高级组合用法**：GMGN 信号 → 执行、Polymarket 分析 → CEX 对冲
+### 链上 DeFi 协议集成
+- Uniswap / PancakeSwap Swap、Liquidity、Farming
+- Aave、Jupiter、Morpho 等借贷和交换
+
+### CEX 交易与自动化
+- Binance / OKX / Gate / Bybit / Bitget 现货、永续、期权
+- 网格、DCA、限价单、批量操作
+
+### Meme 币与 Smart Money
+- GMGN Trending Tokens、Smart Money 跟踪、KOL 信号
+
+### 预测市场交易
+- Polymarket 市场查询和下单
+
+### 开发与安全
+- Uniswap v4 Hooks 安全审查
+- Slither 快速审计、viem/wagmi 集成
+
+### 高级组合用法
+- GMGN 信号 → CEX/DEX 执行
+- Polymarket 分析 → CEX 对冲
+- 多 CEX 价差套利 + On-chain 对冲
 
 ---
 
