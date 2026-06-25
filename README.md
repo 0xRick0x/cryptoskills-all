@@ -1,10 +1,10 @@
 # cryptoskills-all
 
-> 集成 **cryptoskills.dev** + **Binance** + **OKX** + **Gate** + **Bybit** + **Bitget** + **Uniswap AI Skills** 的 Web3 **元技能**
+> 集成 **cryptoskills.dev** + **Binance** + **OKX** + **Gate** + **Bybit** + **Bitget** + **Uniswap** + **PancakeSwap** 的 Web3 **元技能**
 
 [![Upstream Check](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml/badge.svg)](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml)
 
-将主流链上协议和 CEX Agent 生态打包为一个统一元技能，让 AI 能同时掌握 DeFi 协议、CEX 交易和 Uniswap v3/v4 集成能力。
+将主流链上协议和 CEX Agent 生态打包为一个统一元技能，让 AI 能同时掌握 DeFi 协议、CEX 交易和 Uniswap/PancakeSwap 集成能力。
 
 ---
 
@@ -12,7 +12,7 @@
 
 - cryptoskills.dev 97 个协议
 - Binance + OKX + Gate + Bybit + Bitget CEX Agent
-- **Uniswap AI Skills** 集成
+- Uniswap + **PancakeSwap** AI Skills
 - 多个实用代码示例
 - 自动监控上游 + PR
 - 兼容 Claude Code、Cursor、Codex 等
@@ -27,7 +27,8 @@
 - Gate AI Agent
 - Bybit
 - Bitget Agent Hub
-- **Uniswap AI Skills**
+- Uniswap AI Skills
+- **PancakeSwap AI Skills**
 
 ---
 
@@ -44,8 +45,9 @@ npx skills add gate/gate-skills
 npx skills add bybit-exchange/skills
 npx bitget-hub install --target claude
 
-# Uniswap
+# DEX Skills
 npx skills add Uniswap/uniswap-ai
+npx skills add PancakeSwap/pancakeswap-ai
 ```
 
 ---
@@ -54,22 +56,22 @@ npx skills add Uniswap/uniswap-ai
 
 | 场景               | 能力                                           |
 |-----------------------|----------------------------------------------------|
-| DeFi 集成           | Aave, Jupiter, **Uniswap Swap/Liquidity**              |
+| DeFi 集成           | Aave, Jupiter, **Uniswap/PancakeSwap Swap & Liquidity** |
 | CEX Agents            | Binance / OKX / Gate / Bybit / Bitget                |
-| Uniswap v3/v4         | Swap 集成、Liquidity 规划、v4 Hooks 安全         |
-| AI Agent 构建     | 链上 DeFi + 多家 CEX + Uniswap v4             |
+| Uniswap + PancakeSwap | Swap 集成、Liquidity 规划、Farming          |
+| AI Agent 构建     | 链上 DeFi + 多家 CEX + 主流 DEX             |
 
 ---
 
 ## 📝 实用代码示例
 
-详见 SKILL.md，包含 Uniswap Swap Integration 和 v4 Hook Security 等示例。
+详见 SKILL.md，包含 PancakeSwap Liquidity Planner 和 Farming 等示例。
 
 ---
 
 ## ✅ 兼容
 
-Claude Code • Cursor • Codex • Binance • OKX • Gate • Bybit • Bitget • Uniswap
+Claude Code • Cursor • Codex • Binance • OKX • Gate • Bybit • Bitget • Uniswap • PancakeSwap
 
 ---
 
@@ -93,8 +95,9 @@ Claude Code • Cursor • Codex • Binance • OKX • Gate • Bybit • Bitg
 - Gate AI Agent
 - Bybit
 - Bitget Agent Hub
-- **Uniswap AI Skills**: https://developers.uniswap.org/docs/uniswap-ai/skills
+- Uniswap AI Skills
+- **PancakeSwap AI Skills**: https://pancakeswap.ai/skills/
 
 ---
 
-**AI 真正懂 Web3 — 链上 + 多家 CEX + Uniswap**
+**AI 真正懂 Web3 — 链上 + 多家 CEX + Uniswap + PancakeSwap**
