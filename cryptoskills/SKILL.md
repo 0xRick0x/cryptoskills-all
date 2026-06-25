@@ -134,15 +134,15 @@ const tx = await exchange.placeOrder({
 });
 ```
 
-### 组合 2: Polymarket 事件分析. → CEX 对冲对冲
+### 组合 2: Polymarket 事件分析 → CEX 对冲
 ```ts
 // 1. 分析 Polymarket 事件
 const event = await polymarket.gamma.getEvent(eventId);
 
-// 2. 如果判断有利润空间，在 CEX 上对冲对冲
+// 2. 如果判断有利润空间，在 CEX 上对冲
 const hedgeOrder = await exchange.placeOrder({
   symbol: relatedAsset + 'USDT',
-  side: 'SELL',  // 对冲
+  side: 'SELL',
   type: 'MARKET'
 });
 ```
@@ -158,6 +158,30 @@ const lpTx = await pancakeswap.addLiquidity({
   token1: tokenAddress,
   amount0: parseEther('0.5')
 });
+```
+
+### 组合 4: Polymarket 事件交易 → CEX 对冲对冲（高级风险管理）
+```ts
+// 1. 在 Polymarket 上下注某事件
+const pmOrder = await polymarket.clob.placeOrder({ market, outcome: 'Yes', ... });
+
+// 2. 监控 Polymarket 价格变化，并在 CEX 上对冲对冲
+const cexHedge = await exchange.placeOrder({
+  symbol: correlatedAsset,
+  side: 'SELL',
+  type: 'MARKET'
+});
+```
+
+### 组合 5: 多 CEX 价差套利 + On-chain 对冲
+```ts
+// 1. 监控多家 CEX 价差
+const prices = await multiExchange.getPrices('BTCUSDT');
+
+// 2. 在价差最大的交易所执行
+const arbTx = await bestExchange.placeOrder({...});
+
+// 3. 可选：在 DEX 上对冲对冲冲
 ```
 
 ## 响应与使用原则

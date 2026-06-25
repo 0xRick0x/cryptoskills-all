@@ -2,8 +2,8 @@ name: Check Upstream Updates
 
 on:
   schedule:
-    # Every Monday at 09:00 UTC
-    - cron: '0 9 * * 1'
+    # Every Monday and Thursday at 09:00 UTC
+    - cron: '0 9 * * 1,4'
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      issues: write
 
     steps:
       - name: Checkout repository
@@ -20,70 +19,82 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check upstream latest commit date
-        id: upstream
+      - name: Check multiple upstreams
+        id: check
         run: |
-          UPSTREAM_DATE=$(curl -s \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/kukapay/crypto-skills/commits?per_page=1 | \
-            jq -r '.[0].commit.committer.date')
-          echo "date=$UPSTREAM_DATE" >> $GITHUB_OUTPUT
+          declare -A UPSTREAMS
+          UPSTREAMS["cryptoskills.dev"]="kukapay/crypto-skills"
+          UPSTREAMS["Binance"]="binance/binance-skills-hub"
+          UPSTREAMS["OKX"]="okx/agent-skills"
+          UPSTREAMS["Gate"]="gate/gate-skills"
+          UPSTREAMS["Bybit"]="bybit-exchange/skills"
+          UPSTREAMS["Bitget"]="Bitget-AI/agent_hub"
+          UPSTREAMS["Uniswap"]="Uniswap/uniswap-ai"
+          UPSTREAMS["PancakeSwap"]="pancakeswap/pancakeswap-ai"
+          UPSTREAMS["GMGN"]="GMGNAI/gmgn-skills"
 
-      - name: Create branch and PR if upstream updated
-        id: create_pr
-        env:
-          UPSTREAM_DATE: ${{ steps.upstream.outputs.date }}
-        run: |
-          LAST_CHECK_FILE=".last-upstream-check"
-          if [ -f "$LAST_CHECK_FILE" ]; then
-            LAST_CHECK=$(cat "$LAST_CHECK_FILE")
+          UPDATED=""
+          for name in "${!UPSTREAMS[@]}"; do
+            REPO=${UPSTREAMS[$name]}
+            LATEST=$(curl -s "https://api.github.com/repos/$REPO/commits?per_page=1" | jq -r '.[0].commit.committer.date // empty')
+            if [ -n "$LATEST" ]; then
+              echo "$name latest: $LATEST"
+              # Simple check: if we have a previous record and it's newer
+              PREV_FILE=".last-check-$name"
+              if [ -f "$PREV_FILE" ]; then
+                PREV=$(cat "$PREV_FILE")
+                if [[ "$LATEST" > "$PREV" ]]; then
+                  UPDATED+="$name ($LATEST) "
+                fi
+              fi
+              echo "$LATEST" > "$PREV_FILE"
+            fi
+          done
+
+          if [ -n "$UPDATED" ]; then
+            echo "updated_repos=$UPDATED" >> $GITHUB_OUTPUT
+            echo "has_update=true" >> $GITHUB_OUTPUT
           else
-            LAST_CHECK="2025-01-01T00:00:00Z"
+            echo "has_update=false" >> $GITHUB_OUTPUT
           fi
 
-          if [[ "$UPSTREAM_DATE" > "$LAST_CHECK" ]]; then
-            BRANCH_NAME="chore/upstream-update-$(date +%Y%m%d)"
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Create branch and PR if updates found
+        if: steps.check.outputs.has_update == 'true'
+        run: |
+          BRANCH="chore/upstream-sync-$(date +%Y%m%d-%H%M)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add .last-check-*
+          git commit -m "chore: sync upstream updates" || true
+          git push origin "$BRANCH"
 
-            git checkout -b "$BRANCH_NAME"
-
-            echo "$UPSTREAM_DATE" > "$LAST_CHECK_FILE"
-            git add "$LAST_CHECK_FILE"
-            git commit -m "chore: record upstream update check ($UPSTREAM_DATE)"
-
-            git push origin "$BRANCH_NAME"
-
-            echo "create_pr=true" >> $GITHUB_OUTPUT
-            echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
-          else
-            echo "create_pr=false" >> $GITHUB_OUTPUT
-          fi
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
-        if: steps.create_pr.outputs.create_pr == 'true'
+        if: steps.check.outputs.has_update == 'true'
         uses: actions/github-script@v7
         with:
           script: |
-            const { data: pr } = await github.rest.pulls.create({
+            const updated = '${{ steps.check.outputs.updated_repos }}';
+            await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: 'chore: sync with upstream cryptoskills.dev updates',
-              head: '${{ steps.create_pr.outputs.branch }}',
+              title: 'chore: sync with upstream updates',
+              head: '${{ steps.create_pr.outputs.branch || github.ref }}',
               base: 'main',
               body: `## 上游更新检测
 
-原项目 https://github.com/kukapay/crypto-skills 检测到新更新。
+以下上游项目检测到新更新：
+
+${updated}
 
 **建议操作**：
-1. 查看上游最新变更：https://github.com/kukapay/crypto-skills/compare/main...HEAD
-2. 根据变更内容更新本仓库的 \`cryptoskills/SKILL.md\`
-3. 更新 README.md 中的相关说明（如有必要）
-4. 合并此 PR 后，meta-skill 将保持与上游同步
+1. 检查各上游最新变更
+2. 更新相应 Skills 内容
+3. 测试示例是否仍有效
 
 ---
 
-**自动创建于**：${new Date().toISOString()}
-**上游最新提交时间**：${{ steps.upstream.outputs.date }}`
+**自动创建于**：${new Date().toISOString()}`
             });
-            console.log('Created PR:', pr.html_url);
