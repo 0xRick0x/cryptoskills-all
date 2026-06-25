@@ -1,10 +1,10 @@
 # cryptoskills-all
 
-> 集成 **cryptoskills.dev** + **Binance** + **OKX** + **Gate** + **Bybit** + **Bitget** + **Uniswap** + **PancakeSwap** + **GMGN** 的 Web3 **元技能**
+> 集成 **cryptoskills.dev** + **Binance** + **OKX** + **Gate** + **Bybit** + **Bitget** + **Uniswap** + **PancakeSwap** + **GMGN** + **Polymarket** 的 Web3 **元技能**
 
 [![Upstream Check](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml/badge.svg)](https://github.com/0xRick0x/cryptoskills-all/actions/workflows/check-upstream-updates.yml)
 
-将主流链上协议、CEX Agent 和 Meme/Smart Money 生态打包为一个统一元技能，让 AI 能同时掌握 DeFi 协议、CEX 交易和 Solana Meme 币分析能力。
+将主流链上协议、CEX Agent、DEX Skills 和预测市场生态打包为一个统一元技能，让 AI 能同时掌握 DeFi 协议、CEX 交易、DEX 集成、Meme/Smart Money 和预测市场交易能力。
 
 ---
 
@@ -13,7 +13,8 @@
 - cryptoskills.dev 97 个协议
 - Binance + OKX + Gate + Bybit + Bitget CEX Agent
 - Uniswap + PancakeSwap AI Skills
-- **GMGN AI Skills** 集成
+- GMGN AI Skills
+- **Polymarket API** 集成
 - 多个实用代码示例
 - 自动监控上游 + PR
 - 兼容 Claude Code、Cursor、Codex 等
@@ -30,7 +31,8 @@
 - Bitget Agent Hub
 - Uniswap AI Skills
 - PancakeSwap AI Skills
-- **GMGN AI Skills**
+- GMGN AI Skills
+- **Polymarket API**
 
 ---
 
@@ -53,6 +55,9 @@ npx skills add PancakeSwap/pancakeswap-ai
 
 # GMGN
 npx skills add GMGNAI/gmgn-skills
+
+# Polymarket
+# 直接使用 API 或封装为 Skills 使用
 ```
 
 ---
@@ -64,20 +69,21 @@ npx skills add GMGNAI/gmgn-skills
 | DeFi 集成           | Aave, Jupiter, Uniswap, PancakeSwap                  |
 | CEX Agents            | Binance / OKX / Gate / Bybit / Bitget                |
 | Uniswap + PancakeSwap | Swap, Liquidity, Farming                             |
-| **GMGN**              | **Solana Meme 币、Smart Money 跟踪、Trending**     |
-| AI Agent 构建     | 链上 DeFi + 多家 CEX + Meme/Smart Money         |
+| GMGN                  | Solana Meme, Smart Money, Trending                   |
+| **Polymarket**        | **预测市场查询、持仓分析、交易**     |
+| AI Agent 构建     | 链上 DeFi + 多家 CEX + Meme + 预测市场     |
 
 ---
 
 ## 📝 实用代码示例
 
-详见 SKILL.md，包含 GMGN Trending Tokens 和 Token Analysis 等示例。
+详见 SKILL.md，包含 Polymarket 市场查询和下单等示例。
 
 ---
 
 ## ✅ 兼容
 
-Claude Code • Cursor • Codex • Binance • OKX • Gate • Bybit • Bitget • Uniswap • PancakeSwap • GMGN
+Claude Code • Cursor • Codex • Binance • OKX • Gate • Bybit • Bitget • Uniswap • PancakeSwap • GMGN • Polymarket
 
 ---
 
@@ -103,8 +109,9 @@ Claude Code • Cursor • Codex • Binance • OKX • Gate • Bybit • Bitg
 - Bitget Agent Hub
 - Uniswap AI Skills
 - PancakeSwap AI Skills
-- **GMGN AI Skills**: https://github.com/GMGNAI/gmgn-skills
+- GMGN AI Skills
+- **Polymarket API**: https://docs.polymarket.com/cn/api-reference/introduction
 
 ---
 
-**AI 真正懂 Web3 — 链上 + 多家 CEX + Uniswap + PancakeSwap + GMGN**
+**AI 真正懂 Web3 — 链上 + 多家 CEX + Uniswap + PancakeSwap + GMGN + Polymarket**
