@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.5] - 2026-06-30
+
+### Added
+- USAGE.md 深度优化「宏观新闻 + 资金费率套利」场景（场景七）：
+  - 新增激进型与稳健型两种风险级别版本
+  - 增加多层验证决策树
+  - 每个版本附带更专业、可直接复制的中文 AI Prompt
+- README.md 速查表优化：
+  - 新增多个场景行（包含宏观新闻套利、新闻 + Polymarket 事件等）
+  - 增加“风险风格参考”列
+  - 调整流程描述使表格更清晰实用
+- 更新 CHANGELOG 记录本次优化
+
+### Changed
+- 宏观相关文档实用性和可操作性大幅提升
+
 ## [1.3.4] - 2026-06-30
 
 ### Added
