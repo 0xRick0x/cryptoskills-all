@@ -1,20 +1,20 @@
 ---
 name: cryptoskills
-description: Use for Web3 crypto blockchain DeFi cross-chain security auditing and AI agent development tasks — activate on queries about Aave, Jupiter, Binance, OKX, Gate, Bybit, Bitget, Uniswap, PancakeSwap, GMGN, Polymarket or any major on-chain protocol and CEX/DEX/agent skills. Compatible with Claude Code, Cursor, Codex, Cline.
+description: Use for Web3 crypto blockchain DeFi cross-chain security auditing and AI agent development tasks — activate on queries about Aave, Jupiter, Binance, OKX, Gate, Bybit, Bitget, Uniswap, PancakeSwap, GMGN, Polymarket, OpenNews or any major on-chain protocol and CEX/DEX/agent skills. Compatible with Claude Code, Cursor, Codex, Cline.
 compatibility: ["claude-code", "cursor", "codex", "cline", "other-agentskills"]
 license: MIT
-tags: ["crypto", "web3", "defi", "cross-chain", "security", "ai-agent", "binance", "okx", "gate", "bybit", "bitget", "uniswap", "pancakeswap", "gmgn", "polymarket"]
+tags: ["crypto", "web3", "defi", "cross-chain", "security", "ai-agent", "binance", "okx", "gate", "bybit", "bitget", "uniswap", "pancakeswap", "gmgn", "polymarket", "opennews", "news", "signals"]
 category: meta
 ---
 
 # cryptoskills (元技能版)
 
-> **来源**：cryptoskills.dev + Binance + OKX + Gate + Bybit + Bitget + Uniswap + PancakeSwap + GMGN + Polymarket
+> **来源**：cryptoskills.dev + Binance + OKX + Gate + Bybit + Bitget + Uniswap + PancakeSwap + GMGN + Polymarket + OpenNews (6551.io)
 > **修改者**：Grok (xAI) 为用户 0xRick 定制
 
 ## 作用
 
-集成了主流链上协议、CEX Agent、DEX AI Skills 和预测市场的核心知识，让 AI Agent 能同时掌握 DeFi 协议集成、CEX 交易、DEX 操作、Meme/Smart Money 分析和预测市场交易能力。
+集成了主流链上协议、CEX Agent、DEX AI Skills、预测市场和实时财经新闻的核心知识，让 AI Agent 能同时掌握 DeFi 协议集成、CEX 交易、DEX 操作、Meme/Smart Money 分析、预测市场交易和新闻驱动信号能力。
 
 ## 集成生态概览
 
@@ -23,7 +23,8 @@ category: meta
 | 链上 DeFi 协议 | cryptoskills.dev + Uniswap + PancakeSwap      | Swap、Liquidity、Farming、Hooks          |
 | CEX Agent          | Binance + OKX + Gate + Bybit + Bitget         | Spot/Futures/Options + 机器人            |
 | Meme / Smart Money | GMGN                                          | Trending、Smart Money、Token Analysis       |
-| 预测市场       | Polymarket                                    | 市场查询、持仓分析、交易     |
+| 预测市场       | Polymarket                                    | 市场查询、持仓分析、事件交易     |
+| 实时新闻       | OpenNews (6551.io)                            | 84+ 数据源、AI 评分与交易信号、鲸鱼/上新/市场异动 |
 
 ## 具体能帮你做什么
 
@@ -42,7 +43,14 @@ category: meta
 ### 4. 预测市场交易
 - Polymarket 市场查询、持仓分析、事件交易
 
-### 5. 开发与安全
+### 5. 实时财经新闻与信号 (OpenNews)
+- 获取 Bloomberg、Reuters、CoinDesk、FT 等最新财经和加密新闻
+- AI 影响力评分、交易信号 (long/short)、中英双语摘要
+- OnChain 鲸鱼交易、KOL 动向、大额清算预警
+- 交易所上新公告、Meme 情绪、市场异动信号
+- 结合新闻信号进行交易决策和风险对冲
+
+### 6. 开发与安全
 - Uniswap v4 Hooks 安全审查
 - Slither 快速审计、viem/wagmi 集成
 
@@ -86,7 +94,7 @@ const analysis = await gmgn.analyzeSmartMoney(tokenAddress);
 
 ### 示例 5: GMGN 信号 + CEX/DEX 执行（组合用法）
 ```ts
-// 1. 获取 GMGN smart money 信号
+// 1. 获取 GMGN smart money 买入信号
 const signal = await gmgn.getSmartMoneyBuys({ chain: 'sol' });
 
 // 2. 在 CEX 或 DEX 上执行交易
@@ -112,7 +120,22 @@ const order = await polymarket.clob.placeOrder({
 });
 ```
 
-### 示例 7: Uniswap v4 Hook 安全审查
+### 示例 7: OpenNews 实时新闻查询 + AI 信号
+```ts
+// 获取最新高分 crypto 新闻
+const news = await opennews.searchNews({ 
+  q: "ETF OR bitcoin", 
+  limit: 10, 
+  score: 80 
+});
+
+// 结合新闻信号决策是否进行交易
+if (news[0].aiRating.signal === 'long') {
+  // 执行买入
+}
+```
+
+### 示例 8: Uniswap v4 Hook 安全审查
 ```ts
 // 使用 v4-security-foundations 审查 Hook 风险
 // AI 会自动检查 beforeSwapReturnDelta、afterSwapReturnDelta 等潜在风险
@@ -139,7 +162,7 @@ const tx = await exchange.placeOrder({
 // 1. 分析 Polymarket 事件
 const event = await polymarket.gamma.getEvent(eventId);
 
-// 2. 如果判断有利润空间，在 CEX 上对冲
+// 2. 如果刣断有利润空间，在 CEX 上对冲
 const hedgeOrder = await exchange.placeOrder({
   symbol: relatedAsset + 'USDT',
   side: 'SELL',
@@ -162,7 +185,7 @@ const lpTx = await pancakeswap.addLiquidity({
 
 ### 组合 4: Polymarket 事件交易 → CEX 对冲对冲（高级风险管理）
 ```ts
-// 1. 在 Polymarket 上下注某事件
+// 1. 在 Polymarket 下注某事件
 const pmOrder = await polymarket.clob.placeOrder({ market, outcome: 'Yes', ... });
 
 // 2. 监控 Polymarket 价格变化，并在 CEX 上对冲对冲
@@ -176,12 +199,12 @@ const cexHedge = await exchange.placeOrder({
 ### 组合 5: 多 CEX 价差套利 + On-chain 对冲
 ```ts
 // 1. 监控多家 CEX 价差
-const prices = await multiExchange.getPrices('BTCUSDT');
+sconst prices = await multiExchange.getPrices('BTCUSDT');
 
 // 2. 在价差最大的交易所执行
 const arbTx = await bestExchange.placeOrder({...});
 
-// 3. 可选：在 DEX 上对冲对冲冲
+// 3. 可选：在 DEX 上对冲对冲
 ```
 
 ### 组合 6: GMGN Trending Meme → PancakeSwap Liquidity + CEX 对冲
@@ -192,8 +215,19 @@ const hotTokens = await gmgn.getTrendingTokens({ chain: 'bsc', minLiquidity: 500
 // 2. 在 PancakeSwap 上提供流动性
 const lpTx = await pancakeswap.addLiquidity({ token0: 'WBNB', token1: hotTokens[0], ... });
 
-// 3. 在 CEX 上对冲对冲（减少滑点风险）
+// 3. 在 CEX 上对冲（减少滑点风险）
 const hedge = await binance.placeOrder({ symbol: 'BNBUSDT', side: 'SELL', ... });
+```
+
+### 组合 7: OpenNews 高分新闻 → 交易决策 + 对冲
+```ts
+// 1. 获取 OpenNews AI 高分 crypto 或 macro 新闻
+const highImpactNews = await opennews.getHighScoreNews({ score: 85, limit: 5 });
+
+// 2. 根据新闻信号和市场反应调整仓位或对冲
+if (highImpactNews.some(n => n.aiRating.signal === 'long')) {
+  // 加仓或对冲空头
+}
 ```
 
 ## 响应与使用原则
@@ -213,5 +247,6 @@ const hedge = await binance.placeOrder({ symbol: 'BNBUSDT', side: 'SELL', ... })
 - PancakeSwap AI Skills
 - GMGN AI Skills
 - Polymarket API: https://docs.polymarket.com/cn/api-reference/introduction
+- OpenNews: https://github.com/6551Team/opennews-mcp 和 https://6551.io/mcp
 
-此技能已集成主流链上协议、CEX Agent、DEX Skills 和预测市场生态。
+此技能已集成主流链上协议、CEX Agent、DEX Skills、预测市场生态和实时新闻能力。"
