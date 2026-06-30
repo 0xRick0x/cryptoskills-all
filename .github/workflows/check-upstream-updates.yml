@@ -32,6 +32,7 @@ jobs:
           UPSTREAMS["Uniswap"]="Uniswap/uniswap-ai"
           UPSTREAMS["PancakeSwap"]="pancakeswap/pancakeswap-ai"
           UPSTREAMS["GMGN"]="GMGNAI/gmgn-skills"
+          UPSTREAMS["OpenNews MCP"]="6551Team/opennews-mcp"
 
           UPDATED=""
           for name in "${!UPSTREAMS[@]}"; do
