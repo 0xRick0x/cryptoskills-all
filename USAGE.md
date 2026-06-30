@@ -125,48 +125,42 @@ npx skills add GMGNAI/gmgn-skills
 
 ## 4. 更多高级组合示例
 
-### 场景六：新闻驱动 Meme 币交易
+### 场景六：新闻驱动 Meme 币交易（深度优化）
 
-**流程**：OpenNews 热门 Meme 新闻 → GMGN 情绪验证 → DEX 快速上车 + CEX 对冲
+**核心流程**：OpenNews 热门 Meme 新闻 → GMGN 情绪与 Smart Money 验证 → DEX 快速上车 + CEX 对冲 + 风险控制
 
+#### 激进型版本（适合小额高频操作）
 ```markdown
-1. 用 OpenNews 获取 Twitter/X 上爆火的 Meme 相关新闻和情绪信号
-2. 结合 GMGN 检查该 token 的 smart money 动向和流动性
-3. 在 PancakeSwap/Uniswap 上快速买入或添加流动性
-4. 同时在 Binance 上对冲降低波动风险
-5. 持续监控 OpenNews 后续新闻，及时出场
+1. OpenNews 获取 Twitter/X 上爆火的 Meme 新闻和情绪信号（优先 score > 75）
+2. GMGN 检查该 token 的 smart money 买入量、KOL 动向和流动性
+3. 在 PancakeSwap/Uniswap 上快速买入或添加流动性（推荐使用限价单或 DCA）
+4. 同时在 Binance 上开中小仓对冲（降低波动风险）
+5. 开仓后持续监控 OpenNews 后续新闻，及时出场或加仓
 ```
 
-**AI 提示词示例**：
-> “用 OpenNews 查看最近 Twitter 上爆火的 Meme 新闻，结合 GMGN 分析该 token 的 smart money 情况，然后在 PancakeSwap 上给出操作建议并在 Binance 对冲。”
+**AI Prompt 示例（激进型）**：
+> “用 OpenNews 查看最近 1 小时内 Twitter 上爆火的 Meme 新闻（score > 75），结合 GMGN 检查 smart money 买入情况和 KOL 动向，然后在 PancakeSwap 上给出快速上车建议，并在 Binance 上开中小仓对冲。”
 
-### 场景七：宏观新闻 + 资金费率套利
-
-**流程**：OpenNews 利率/宏观新闻 → 监控跨所资金费率差异 → CEX 套利 + 对冲
-
+#### 稳健型版本（适合中大额、风险控制严格）
 ```markdown
-1. 用 OpenNews 获取美联储、ECB 或重要经济数据新闻
-2. 监控 Binance / Bybit / OKX 上相关永续合约的资金费率差异
-3. 在资金费率最低的平台开仓，在最高的平台对冲
-4. 结合 OpenNews 后续新闻调整或平仓
+1. OpenNews 获取高分 Meme 新闻（score > 85）并过滤假新闻
+2. GMGN 进行多层验证：smart money 持续买入 + 流动性 + 基础面风险
+3. 在 DEX 上使用限价单或分批添加流动性（避免滑点）
+4. CEX 对冲使用较低仓位（建议不超过总资金5-10%）
+5. 设置停损点和目标位置，并开启 OpenNews 相关实时监控
 ```
 
-**AI 提示词示例**：
-> “用 OpenNews 查看最近美联储相关新闻，然后检查 Binance 和 Bybit 上 BTCUSDT 永续合约的资金费率差异，给出套利策略。”
+**AI Prompt 示例（稳健型）**：
+> “用 OpenNews 查看最近高分 Meme 新闻（score > 85），结合 GMGN 进行 smart money 持续买入、流动性和基础面风险多层验证，然后在 PancakeSwap 上给出稳健的流动性提供建议，并在 Binance 上开中小仓对冲。请带上风险控制建议和停损点。”
 
-### 场景八：OnChain 鲸鱼预警 + CEX 快速响应
+#### 多层验证决策树（推荐）
+- **第1层** OpenNews 新闻质量 + 情绪信号
+- **第2层** GMGN Smart Money 持续买入 + KOL 动向
+- **第3层** DEX 流动性和价格反应
+- **第4层** CEX 对冲与风险管理
 
-**流程**：OpenNews OnChain 鲸鱼动向 → GMGN 进一步验证 → CEX 快速开仓 / 对冲
-
-```markdown
-1. 用 OpenNews 获取 Hyperliquid 或其他链上鲸鱼大额交易预警
-2. 结合 GMGN 检查该 token 在 CEX 上的流动性和价格反应
-3. 在 Binance / OKX 上快速开仓或对冲
-4. 并在 OpenNews 中设置相关实时订阅（如果支持）
-```
-
-**AI 提示词示例**：
-> “用 OpenNews 查看 Hyperliquid 上的鲸鱼大额交易预警，结合 GMGN 分析该 token 在 CEX 的情况，然后在 Binance 上给出快速响应策略。”
+**AI Prompt 示例（综合版）**：
+> “用 OpenNews 和 GMGN 对最近爆火 Meme token 进行多层验证（新闻质量 + smart money 持续买入 + 流动性），然后在 PancakeSwap 上给出上车建议，并在 Binance 上开中小仓对冲。请提供两种风险级别的方案。”
 
 ## 5. 安全最佳实践
 

@@ -47,6 +47,22 @@ cp -r opennews ~/.openclaw/skills/   # 或按照你的客户端路径
 
 ---
 
+## 📋 技能组合速查表
+
+| 使用场景           | 核心技能组合                          | 典型流程                                   | 推荐中文 Prompt 关键词               |
+|---------------------------|-----------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| **Meme 币交易**       | OpenNews + GMGN + PancakeSwap/Uniswap + Binance | 新闻热度 → Smart Money 验证 → DEX 上车 + CEX 对冲 | “用 OpenNews 查 Meme 新闻 + GMGN smart money，给出 PancakeSwap 上车建议” |
+| **新闻驱动 Meme**   | OpenNews + GMGN + DEX + CEX                   | 高分 Meme 新闻 → 情绪验证 → DEX/CEX 快速操作 | “用 OpenNews 查爆火 Meme 新闻（score > 80），结合 GMGN 给出上车建议” |
+| **宏观新闻 + 套利** | OpenNews + CEX 资金费率监控            | 利率/宏观新闻 → 跨所费率差异 → CEX 套利     | “用 OpenNews 查美联储新闻，检查 Binance/Bybit 资金费率差异套利” |
+| **OnChain 鲸鱼预警** | OpenNews + GMGN + CEX                         | 鲸鱼大额交易预警 → GMGN 验证 → CEX 快速响应 | “用 OpenNews 查 Hyperliquid 鲸鱼动向，结合 GMGN 给出 Binance 快速响应建议” |
+| **预测市场交易** | Polymarket + CEX                              | 事件市场分析 → 下注 → CEX 对冲               | “用 Polymarket 查热门事件，分析后在 Binance 对冲” |
+| **链上 DeFi 操作**   | cryptoskills + Uniswap/PancakeSwap            | Swap / Liquidity / Farming                     | “在 PancakeSwap 为 XXX token 添加流动性并开 Farming” |
+| **CEX 自动化**         | Binance/OKX/Bybit + cryptoskills              | 现货/永续/期权交易 + 网格/DCA          | “在 Binance 上开 BTCUSDT 网格策略”         |
+
+> **提示**：上表为常见场景的最优组合方案。具体流程和更多 prompt 请参考 **[USAGE.md](./USAGE.md)**。
+
+---
+
 ## 📖 详细使用指南
 
 想深入了解如何高效组合不同平台的 Skills？

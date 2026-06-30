@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2026-06-30
+
+### Added
+- USAGE.md 深度优化「新闻驱动 Meme 币交易」场景：
+  - 新增激进型与稳健型两种风险级别版本
+  - 增加多层验证决策树
+  - 每个版本附带更专业、可直接复制的中文 AI Prompt
+- README.md 新增「技能组合速查表」章节（清晰表格汇总主要场景、组合方式、流程和 prompt 关键词）
+- 更新 CHANGELOG 记录本次优化
+
+### Changed
+- Meme 相关文档实用性和可操作性大幅提升
+
 ## [1.3.3] - 2026-06-30
 
 ### Added
