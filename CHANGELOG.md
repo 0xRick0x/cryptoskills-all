@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-06-30
+
+### Added
+- 完善 `USAGE.md`：新增 OpenNews 安装说明、中文示例对话和「场景五：实时新闻驱动交易决策」完整流程
+- USAGE.md 进阶建议添加日常新闻监控和标准化流程建议
+- README.md 小幅润色（新增 OpenNews 快速上手独立小节，提示词更突出）
+- opennews/SKILL.md 中文示例 prompt 更自然、专业，更符合中文用户使用习惯
+
+### Changed
+- 整体文档一致性和实用性进一步提升
+
 ## [1.3.1] - 2026-06-30
 
 ### Added

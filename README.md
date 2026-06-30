@@ -32,32 +32,18 @@
 
 ---
 
-## 🚀 快速开始
+## 🚀 OpenNews 快速上手
 
+**1. 获取 Token** 
+https://6551.io/mcp
+
+**2. 安装 Skill**
 ```bash
-git clone https://github.com/0xRick0x/cryptoskills-all.git
-
-# 安装元技能 (cryptoskills)
-cp -r cryptoskills ~/.claude/skills/
-
-# 安装 OpenNews Skill (适用于 OpenClaw / Claude 等)
-cp -r opennews ~/.openclaw/skills/   # 或按照你的客户端路径调整
-
-# 安装其他上游 Skills (按需)
-npx skills add binance-web3
-npx skills add okx/agent-skills
-npx skills add gate/gate-skills
-npx skills add bybit-exchange/skills
-npx bitget-hub install --target claude
-npx skills add Uniswap/uniswap-ai
-npx skills add PancakeSwap/pancakeswap-ai
-npx skills add GMGNAI/gmgn-skills
+cp -r opennews ~/.openclaw/skills/   # 或按照你的客户端路径
 ```
 
-> **OpenNews MCP 完整安装** ：获取 Token → https://6551.io/mcp  
-> 完整配置参考：https://github.com/6551Team/opennews-mcp
-
-> **提示**：推荐根据实际需求按需安装，不必一次性安装所有。
+**3. 在 AI 中直接使用中文 prompt**：
+> “用 OpenNews 查一下今天对 BTC 有影响力的新闻，结合 GMGN 给出操作建议。”
 
 ---
 
