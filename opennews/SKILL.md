@@ -262,3 +262,78 @@ curl -s -X GET "https://ai.6551.io/open/free_hot?category=macro&subcategory=defi
 - Rate limits apply; max 100 results per request for authenticated API
 - AI ratings may not be available on all articles (check `status == "done"`)
 - Free API data is cached and updated periodically; if data is still being generated, a 503 response will be returned
+
+---
+
+## 中文使用示例
+
+### 示例 1: 查询最新高影响力加密新闻（推荐与 cryptoskills 组合使用）
+
+```bash
+curl -s -X POST "https://ai.6551.io/open/news_search" \
+  -H "Authorization: Bearer $OPENNEWS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "q": "比特币 ETF OR 以太坊 ETF",
+    "limit": 8,
+    "score": 80,
+    "hasCoin": true
+  }'
+```
+
+**AI 中直接对话示例** (在 Claude / Cursor 中)：
+
+> “用 OpenNews 查一下今天 BTC 和 ETH 相关的高分新闻（score > 85），分析 AI 信号是 long 还是 short，并结合 GMGN 和 Binance 给出操作建议。”
+
+### 示例 2: OnChain 鲸鱼 + KOL 动向预警
+
+```bash
+curl -s -X POST "https://ai.6551.io/open/news_search" \
+  -H "Authorization: Bearer $OPENNEWS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "engineTypes": {"onchain": []},
+    "limit": 10
+  }'
+```
+
+**AI 提示词**：
+
+> “用 OpenNews 查看最近 Hyperliquid 上的鲸鱼大额交易和 KOL 动向，然后在 Binance 上对应做对冲或跟进。”
+
+### 示例 3: 免 Token 免费端点（无 OPENNEWS_TOKEN 时使用）
+
+```bash
+# 获取宏观热点新闻
+curl -s "https://ai.6551.io/open/free_hot?category=macro"
+
+# 获取 DeFi 子类别热闻
+curl -s "https://ai.6551.io/open/free_hot?category=crypto&subcategory=defi"
+```
+
+### 示例 4: 交易所上新 + Meme 情绪监控
+
+```bash
+curl -s -X POST "https://ai.6551.io/open/news_search" \
+  -H "Authorization: Bearer $OPENNEWS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "engineTypes": {
+      "listing": ["Binance", "OKX"],
+      "meme": []
+    },
+    "limit": 5
+  }'
+```
+
+**AI 提示词**：
+
+> “检查 Binance 和 OKX 最近上新的币种，并分析 Twitter Meme 情绪，然后在 PancakeSwap 或 Binance 上给出操作建议。”
+
+### 示例 5: 高级组合 - 新闻信号 + 预测市场 + CEX 对冲
+
+**AI 提示词** (与 cryptoskills 元技能一起使用)：
+
+> “用 OpenNews 查看最近对美国利率和政策的重要新闻（score > 80），然后结合 Polymarket 上相关事件市场分析，最后在 Binance 上对应资产做对冲策略。”
+
+**提示**：OpenNews 的 AI 信号可以直接作为 cryptoskills 中 CEX/DEX 操作的前置信号来源，大大提升交易时机的准确性。

@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-06-30
+
+### Added
+- 为 `opennews/SKILL.md` 新增完整内容并添加了「中文使用示例」章节（包含 5 个实用 crypto 交易场景 + AI 提示词）
+- 优化 `README.md` 中文表达、快速开始部分、OpenNews 提示词示例和结构清晰度
+- 更新 CHANGELOG 记录本次优化
+
+### Changed
+- `opennews/SKILL.md` 现在更适合中文用户使用，支持与 cryptoskills 元技能无缝组合
+
 ## [1.3.0] - 2026-06-30
 
 ### Added
