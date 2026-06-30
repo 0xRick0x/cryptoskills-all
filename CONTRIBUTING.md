@@ -2,7 +2,7 @@
 
 感谢你有兴趣贡献到 `cryptoskills-all` 项目！
 
-本项目是一个集成 **cryptoskills.dev** 和 **Binance Wallet Skills** 的元技能（Meta Skill），目标是让 AI Agent 更容易、更安全地开发 Web3 应用。
+本项目是一个集成了 **cryptoskills.dev** + **Binance** + **OKX** + **Gate** + **Bybit** + **Bitget** + **Uniswap** + **PancakeSwap** + **GMGN** + **Polymarket** + **OpenNews** 等多个生态的 **元技能 (Meta Skill)** 集合。目标是让 AI Agent 更安全、更高效地进行 Web3 交易、市场分析和新闻驱动决策。
 
 ## 如何贡献
 
@@ -20,30 +20,37 @@
 2. 创建新分支 (`git checkout -b feature/your-feature-name`)
 3. 在分支上进行修改
 4. 提交 PR 前，请确保：
-   - 代码格式符合项目风格
+   - 代码/文档格式符合项目风格
    - 已测试过
    - 提交信息清晰
 
-### 3. 提交内容范围
+### 3. 欢迎的贡献类型
 
-我们欢迎以下类型的贡献：
-
-- 新增实用代码示例（特别是 Binance Skills 相关）
+- 新增实用代码示例（特别是多平台组合场景）
 - 优化现有说明和结构
 - 修复错别字或表达不清楚的内容
-- 增加新的实用场景说明
-- 改进 README 或文档
+- 新增实用交易场景说明（先特别欢迎新闻驱动类型）
+- 改进 README、USAGE.md 等文档
+- 添加新的技能包（可参考 opennews/ 目录结构）
 
-### 4. 更新元技能内容的建议
+### 4. 添加新技能包的建议
 
-如果你想更新 `cryptoskills/SKILL.md` 中的内容，请注意：
+如果你想添加新的技能包（如新的 CEX、DEX 或新闻源）：
+
+- 在项目根目录下创建 `your-skill/SKILL.md`
+- 参考 `opennews/SKILL.md` 的格式（包含 frontmatter + 详细使用说明 + 中英文示例）
+- 在 README.md 和 USAGE.md 中更新集成表格和示例
+- 更新 `.github/workflows/check-upstream-updates.yml` 添加上游监控
+- 在 PR 中说明新技能的来源和优势
+
+### 5. 更新 `cryptoskills/SKILL.md` 元技能的建议
 
 - 保持中文说明为主
-- 新增示例时，请附上简单的说明和使用场景
-- 对于 Binance Skills，优先推荐安全相关和市场数据类 Skills
+- 新增示例时请附上简单的使用场景说明
+- 优先推荐安全相关、市场数据类和新闻驱动类 Skills
 - 更新后请在 PR 中说明更新理由
 
-### 5. Commit 规范
+### 6. Commit 规范
 
 - `feat:` 新功能
 - `fix:` 修复 bug
@@ -52,7 +59,7 @@
 
 ## 联系方式
 
-如果你有任何疑问，可以通过 Issue 或邮件联系维护者。
+如果你有任何疑问，可以通过 Issue 联系维护者。
 
 再次感谢你的贡献！
 

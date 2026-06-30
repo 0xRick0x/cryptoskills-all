@@ -102,7 +102,7 @@ npx skills add GMGNAI/gmgn-skills
 ```markdown
 1. 监控多家 CEX 同一交易对的价格差异
 2. 在价差最大的平台执行交易
-3. 可选：在 DEX 上进行最终结算或对冲
+3. 可选：在 DEX 上进行最终结筗或对冲
 ```
 
 ### 场景五：实时新闻驱动交易决策（新增）
@@ -123,7 +123,52 @@ npx skills add GMGNAI/gmgn-skills
 
 > “检查今天 BTC 相关的高分新闻和 OnChain 鲸鱼动向，分析是否有利于目前持仓方向，并结合 GMGN 给出操作建议。”
 
-## 4. 安全最佳实践
+## 4. 更多高级组合示例
+
+### 场景六：新闻驱动 Meme 币交易
+
+**流程**：OpenNews 热门 Meme 新闻 → GMGN 情绪验证 → DEX 快速上车 + CEX 对冲
+
+```markdown
+1. 用 OpenNews 获取 Twitter/X 上爆火的 Meme 相关新闻和情绪信号
+2. 结合 GMGN 检查该 token 的 smart money 动向和流动性
+3. 在 PancakeSwap/Uniswap 上快速买入或添加流动性
+4. 同时在 Binance 上对冲降低波动风险
+5. 持续监控 OpenNews 后续新闻，及时出场
+```
+
+**AI 提示词示例**：
+> “用 OpenNews 查看最近 Twitter 上爆火的 Meme 新闻，结合 GMGN 分析该 token 的 smart money 情况，然后在 PancakeSwap 上给出操作建议并在 Binance 对冲。”
+
+### 场景七：宏观新闻 + 资金费率套利
+
+**流程**：OpenNews 利率/宏观新闻 → 监控跨所资金费率差异 → CEX 套利 + 对冲
+
+```markdown
+1. 用 OpenNews 获取美联储、ECB 或重要经济数据新闻
+2. 监控 Binance / Bybit / OKX 上相关永续合约的资金费率差异
+3. 在资金费率最低的平台开仓，在最高的平台对冲
+4. 结合 OpenNews 后续新闻调整或平仓
+```
+
+**AI 提示词示例**：
+> “用 OpenNews 查看最近美联储相关新闻，然后检查 Binance 和 Bybit 上 BTCUSDT 永续合约的资金费率差异，给出套利策略。”
+
+### 场景八：OnChain 鲸鱼预警 + CEX 快速响应
+
+**流程**：OpenNews OnChain 鲸鱼动向 → GMGN 进一步验证 → CEX 快速开仓 / 对冲
+
+```markdown
+1. 用 OpenNews 获取 Hyperliquid 或其他链上鲸鱼大额交易预警
+2. 结合 GMGN 检查该 token 在 CEX 上的流动性和价格反应
+3. 在 Binance / OKX 上快速开仓或对冲
+4. 并在 OpenNews 中设置相关实时订阅（如果支持）
+```
+
+**AI 提示词示例**：
+> “用 OpenNews 查看 Hyperliquid 上的鲸鱼大额交易预警，结合 GMGN 分析该 token 在 CEX 的情况，然后在 Binance 上给出快速响应策略。”
+
+## 5. 安全最佳实践
 
 - **CEX 交易前优先进行安全审计**：使用 query-token-audit 或链上工具先检查代币风险。
 - **大额操作建议分步执行**：先小额测试，再逐步加仓。
@@ -131,7 +176,7 @@ npx skills add GMGNAI/gmgn-skills
 - **API Key 权限最小化**：CEX API Key 只开通必要的交易权限。
 - **定期检查持仓和风险**：尤其是提供流动性后要关注无常损失。
 
-## 5. 常见问题
+## 6. 常见问题
 
 **Q: 需要一次性安装所有 Skills 吗？**
 A: 不需要。建议根据你的主要交易场景按需安装。OpenNews 可以作为所有交易决策的前置情报来源。
@@ -145,7 +190,7 @@ A: 主要支持 Claude Code、Cursor、Codex 等支持 Skills 协议的客户端
 **Q: 可以自定义组合策略吗？**
 A: 可以。本元技能的设计初衷就是支持灵活的跨平台组合。
 
-## 6. 进阶建议
+## 7. 进阶建议
 
 - 多关注 **GMGN + DEX** 的组合，这是目前 Meme 币交易效率较高的路径。
 - 预测市场交易建议配合 CEX 进行风险对冲。

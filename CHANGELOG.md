@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2026-06-30
+
+### Added
+- 更新 `CONTRIBUTING.md`：反映当前完整生态（包含 OpenNews等），新增“添加新技能包”指南、SKILL.md 格式建议和更详细的贡献流程
+- `USAGE.md` 新增「更多高级组合示例」章节，包含 3 个新场景：
+  - 新闻驱动 Meme 币交易
+  - 宏观新闻 + 资金费率套利
+  - OnChain 鲸鱼预警 + CEX 快速响应
+- 每个新场景都附带完整流程和专业中文 AI prompt 示例
+
+### Changed
+- 文档实用性和交易场景覆盖度进一步提升
+
 ## [1.3.2] - 2026-06-30
 
 ### Added
